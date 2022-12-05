@@ -1,0 +1,82 @@
+<!-- <header class="ms-welcome__header ms-bgColor-neutralLighter ms-u-fadeIn500">
+  <img
+    width="90"
+    height="90"
+    src="../../../assets/logo-filled.png"
+    alt="Contoso Task Pane Add-in"
+    title="Contoso Task Pane Add-in"
+  />
+  <h1 class="ms-fontSize-su ms-fontWeight-light ms-fontColor-neutralPrimary">{{ welcomeMessage }}</h1>
+</header>
+<main class="ms-welcome__main">
+  <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">
+    Discover what Office Add-ins can do for you today!
+  </h2>
+  <ul class="ms-List ms-welcome__features ms-u-slideUpIn10">
+    <li class="ms-ListItem">
+      <i class="ms-Icon ms-Icon--Ribbon"></i>
+      <span class="ms-font-m ms-fontColor-neutralPrimary">Achieve more with Office integration</span>
+    </li>
+    <li class="ms-ListItem">
+      <i class="ms-Icon ms-Icon--Unlock"></i>
+      <span class="ms-font-m ms-fontColor-neutralPrimary">Unlock features and functionality</span>
+    </li>
+    <li class="ms-ListItem">
+      <i class="ms-Icon ms-Icon--Design"></i>
+      <span class="ms-font-m ms-fontColor-neutralPrimary">Create and visualize like a pro</span>
+    </li>
+  </ul>
+  <br />
+  <br />
+  <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
+  <div role="button" class="ms-welcome__action ms-Button ms-Button--hero ms-u-slideUpIn20" (click)="run()">
+    <span class="ms-Button-label">Run</span>
+    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+  </div>
+ 
+  
+</main> -->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<div>
+  <div *ngIf="waiting">
+      <div class="overlay"></div>
+      <img class="spinner" src="/assets/spinner.gif"/>
+  </div>
+  <div class="ms-bgColor-greenDark header">
+      <span class="ms-font-su ms-fontColor-white">Infinity </span>
+  </div>
+  <div>
+      <div class="ms-MessageBanner" *ngIf="error">
+          <div class="ms-MessageBanner-content" style="text-align: left; margin-left: 40px;">
+              <div class="ms-MessageBanner-text ms-font-s-plus">
+                  <div class="ms-MessageBanner-clipper">
+                      <i class="ms-Icon ms-Icon--Error"></i>
+                      <span style="vertical-align: top;">&nbsp;{{error}}</span>
+                  </div>
+              </div>
+          </div>
+          <button class="ms-MessageBanner-close" (click)="error = null;">
+              <i class="ms-Icon ms-Icon--Clear"></i>
+          </button>
+      </div>
+      <div class="padding10">
+          <div class="pct100 tbl-head">
+              <span class="ms-font-l">Search for item groups</span>
+          </div>
+          <div class="pct100">
+              <input class="ms-TextField-field" #newSymbol (keyup.enter)="addSymbol(newSymbol.value); newSymbol.value = '';" placeholder="Enter a item group (ex: MSFT)" />
+          </div>
+          <div class="pct100 itemRow" *ngFor="let symbol of symbols; let i = index" >
+              <div class="left ms-font-l">{{symbol}}</div>
+              <div class="right">
+                  <div class="left icon" (click)="refreshSymbol(i)"><i class="ms-Icon ms-Icon--Refresh" aria-hidden="true"></i></div>
+                  <div class="left icon" (click)="deleteSymbol(i)"><i class="ms-Icon ms-Icon--Delete" aria-hidden="true"></i></div>
+              </div>
+          </div>
+          <div class="pct100 itemRow" *ngIf="symbols.length == 0">
+              <em class="ms-font-l">No symbols added</em>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript"
+    ],
+    "angular.enable-strict-mode-prompt": false
+  }
+  
